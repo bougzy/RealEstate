@@ -1,0 +1,6 @@
+/* App.css */
+.sidebar .list-group-item.active {
+  background-color: #FF8844 !important;  /* Ensure this color matches your desired active background color */
+  color: white !important;  /* Ensure the text color is readable */
+  border-radius:"20px" !important;
+}

@@ -1,0 +1,25 @@
+.unapproved{
+    background: #B2BEB5;
+}
+
+.approved{
+   border-bottom: black 3px solid;
+}
+
+
+
+/* mylisting.css */
+
+.dropdown-toggle.active,
+.dropdown-toggle:active,
+.dropdown-toggle:focus,
+.dropdown-toggle:hover {
+  background-color: orange !important;
+  color: white !important;
+}
+
+
+.apply-filter{
+    background: orange !important;
+    border:none !important;
+}
