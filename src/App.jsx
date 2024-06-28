@@ -4,6 +4,7 @@ import { FaHome, FaUser, FaCog, FaEnvelope } from 'react-icons/fa'; // Import ic
 import Dashb from './Components/Dash/Dashb';
 import Activities from './Components/Activity/Activities';
 import MyListing from './Components/MyListing/MyListing';
+import AccountSettings from './Components/AccountSettings/AccountSettings';
 import Favourites from './Favourites';
 
 import './App.css';  // Import the CSS file
@@ -21,6 +22,8 @@ const Dashboard = () => {
         return <MyListing />;
       case 'Messages':
         return <Favourites />;
+        case 'AccountSettings':
+          return <AccountSettings />;
       default:
         return <Dashb />;
     }
@@ -51,6 +54,7 @@ const Dashboard = () => {
             >
               <FaUser className="me-2" /> Activity
             </ListGroup.Item>
+
             <ListGroup.Item
               className="border-0 rounded-5 mt-3 d-flex align-items-center"
               action
@@ -59,6 +63,9 @@ const Dashboard = () => {
             >
               <FaCog className="me-2" /> My Listing
             </ListGroup.Item>
+
+            
+
             <ListGroup.Item
               className="border-0 rounded-5 mt-3 d-flex align-items-center"
               action
@@ -67,7 +74,20 @@ const Dashboard = () => {
             >
               <FaEnvelope className="me-2" /> Favourites
             </ListGroup.Item>
+
+
+            
+          <ListGroup.Item
+              className="border-0 rounded-5 mt-3 d-flex align-items-center"
+              action
+              onClick={() => setActiveTab('AccountSettings')}
+              active={activeTab === 'AccountSettings'}
+            >
+              <FaCog className="me-2" /> Account Settings
+            </ListGroup.Item>
           </ListGroup>
+
+
         </Col>
         <Col md={10} className="bg-light" style={{ height: "100vh" }}>
           {renderContent()}
