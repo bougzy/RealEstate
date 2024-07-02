@@ -1,14 +1,77 @@
+
+
+
+// import React, { useState } from 'react';
+// import { Container, Row, Col, Button } from 'react-bootstrap';
+// import Dashb from './Components/Dash/Dashb';
+// import Activities from './Components/Activity/Activities';
+// import MyListing from './Components/MyListing/MyListing';
+// import Favourites from './Favourites';
+// import Sidebar from './Components/Sidebar/Sidebar';
+
+// import './App.css';  // Import the CSS file
+
+// const App = () => {
+//   const [activeTab, setActiveTab] = useState('Home');
+//   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+//   const renderContent = () => {
+//     switch (activeTab) {
+//       case 'Home':
+//         return <Dashb />;
+//       case 'Profile':
+//         return <Activities />;
+//       case 'Settings':
+//         return <MyListing />;
+//       case 'Messages':
+//         return <Favourites />;
+//       default:
+//         return <Dashb />;
+//     }
+//   };
+
+//   return (
+//     <Container fluid className="bg-light">
+//       <Button 
+//         variant="primary" 
+//         className="d-md-none mb-3 mt-2 toggle-button"
+//         onClick={() => setSidebarOpen(!sidebarOpen)}
+//         style={{ zIndex: 1050 }}  // Ensure button is above the sidebar
+//       >
+//         Toggle Sidebar
+//       </Button>
+//       <Row>
+//         <Col 
+//           md={3} 
+//           className={`sidebar-container ${sidebarOpen ? 'open' : ''} d-md-block`}
+//           style={{ zIndex: 1040 }}  // Sidebar z-index
+//         >
+//           <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+//         </Col>
+//         <Col md={9} className="bg-light content" style={{ height: "210vh" }}>
+//           {renderContent()}
+//         </Col>
+//       </Row>
+//     </Container>
+//   );
+// };
+
+// export default App;
+
+
 import React, { useState } from 'react';
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
-import { FaHome, FaUser, FaCog, FaEnvelope } from 'react-icons/fa'; // Import icons
+import { Container, Row, Col } from 'react-bootstrap';
+import Sidebar from './Components/Sidebar/Sidebar';
 import Dashb from './Components/Dash/Dashb';
 import Activities from './Components/Activity/Activities';
 import MyListing from './Components/MyListing/MyListing';
-import Favourites from './Favourites';
+import AccountSettings from './Components/AccountingSettings/AccountingSettings'
+import Favorites from './Components/Favorites/Favorites';
+import SavedProfile from './Components/SavedProfile/SavedProfile';
 
 import './App.css';  // Import the CSS file
 
-const Dashboard = () => {
+const App = () => {
   const [activeTab, setActiveTab] = useState('Home');
 
   const renderContent = () => {
@@ -20,7 +83,11 @@ const Dashboard = () => {
       case 'Settings':
         return <MyListing />;
       case 'Messages':
-        return <Favourites />;
+        return <Favorites />;
+      case 'SavedProfile':
+        return <SavedProfile />;
+      case 'AccountSettings':
+        return <AccountSettings />;
       default:
         return <Dashb />;
     }
@@ -29,47 +96,10 @@ const Dashboard = () => {
   return (
     <Container fluid>
       <Row>
-        <Col md={2} className="bg-white sidebar" style={{height:"100vh"}}>
-          <ListGroup className='list-group-flush mt-4 ms-4'>
-            <div className="">
-              <h3 style={{color:"#FF8844"}}>RealHomes</h3>
-              <p className="mt-4" style={{color:"#FF8844"}}>Personal Account</p>
-            </div>
-            <ListGroup.Item
-              className="border-0 rounded-5 mt-5 d-flex align-items-center"
-              action
-              onClick={() => setActiveTab('Home')}
-              active={activeTab === 'Home'}
-            >
-              <FaHome className="me-2" /> Dashboard
-            </ListGroup.Item>
-            <ListGroup.Item
-              className="border-0 rounded-5 mt-3 d-flex align-items-center"
-              action
-              onClick={() => setActiveTab('Profile')}
-              active={activeTab === 'Profile'}
-            >
-              <FaUser className="me-2" /> Activity
-            </ListGroup.Item>
-            <ListGroup.Item
-              className="border-0 rounded-5 mt-3 d-flex align-items-center"
-              action
-              onClick={() => setActiveTab('Settings')}
-              active={activeTab === 'Settings'}
-            >
-              <FaCog className="me-2" /> My Listing
-            </ListGroup.Item>
-            <ListGroup.Item
-              className="border-0 rounded-5 mt-3 d-flex align-items-center"
-              action
-              onClick={() => setActiveTab('Messages')}
-              active={activeTab === 'Messages'}
-            >
-              <FaEnvelope className="me-2" /> Favourites
-            </ListGroup.Item>
-          </ListGroup>
+        <Col md={2}>
+          <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
         </Col>
-        <Col md={10} className="bg-light" style={{ height: "100vh" }}>
+        <Col md={10} className="bg-light" style={{ height: "130vh" }}>
           {renderContent()}
         </Col>
       </Row>
@@ -77,4 +107,5 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default App;
+

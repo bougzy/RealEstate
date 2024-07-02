@@ -11,3 +11,70 @@
     width: calc(100%); /* Adjust to ensure it aligns with the profile image */
   }
   
+
+  /* Add this to your CSS file */
+@media (max-width: 768px) {
+  .search-form-mobile {
+    width: 90% !important;
+  }
+
+  .search-form-mobile .search-input {
+    width: calc(100% - 40px); /* Adjust this value as needed */
+  }
+}
+
+.search{
+  width: 60%
+}
+  
+.profile{
+  margin-left: -100%;
+}
+
+
+
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  transition: left 0.3s ease-in-out;
+  z-index: 1040; /* Make sure it overlaps the content */
+}
+
+.sidebar-container.open {
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .sidebar-container {
+    position: static;
+    transition: none;
+    left: 0;
+  }
+}
+
+.content {
+  margin-left: 0;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .content {
+    margin-left: 16.666667%; /* Adjust this value according to your sidebar width */
+  }
+}
+
+
+.custom-table tbody tr,
+.custom-table tbody td,
+.custom-table tbody th {
+  border: none;
+}
+
+.custom-table thead th {
+  border-bottom: 2px solid #dee2e6; /* You can customize the border color and thickness */
+}
+
+
+

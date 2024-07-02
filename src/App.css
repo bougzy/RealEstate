@@ -4,3 +4,45 @@
   color: white !important;  /* Ensure the text color is readable */
   border-radius:"20px" !important;
 }
+
+
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  transition: left 0.3s ease-in-out;
+  z-index: 1040; /* Make sure it overlaps the content */
+  width: 75%; /* For mobile view, sidebar takes 75% of the width */
+}
+
+.sidebar-container.open {
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .sidebar-container {
+    position: static;
+    transition: none;
+    left: 0;
+    width: 100%; /* Sidebar takes full width of its column on desktop */
+  }
+}
+
+.content {
+  margin-left: 0;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .content {
+    margin-left: 0;
+    width: 100%; /* Content takes full width of its column on desktop */
+  }
+}
+
+.toggle-button {
+  position: relative;
+  z-index: 1050; /* Ensure button is above the sidebar */
+}
+
